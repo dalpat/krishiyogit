@@ -24,6 +24,23 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('admin/dashboard', [DashboardController::class,'index'])->name('admin.dashboard.index');
+// Routes for admin
+Route::group([
+    'middleware'=>['auth'],
+    'prefix'=>'admin'
+], function () {
+    Route::get('dashboard', [DashboardController::class,'index'])->name('admin.dashboard.index');
+});
 
-Route::get('farmer/dashboard', [FarmerDashboardController::class,'index'])->name('farmer.dashboard.index');
+
+// Routes for farmers
+Route::group([
+    'middleware'=>['auth'],
+    'prefix'=>'farmer',
+], function () {
+    Route::get('dashboard', [FarmerDashboardController::class,'index'])->name('farmer.dashboard.index');
+});
+
+
+
+// Routes for vendors

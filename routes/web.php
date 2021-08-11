@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Farmer\DashboardController as FarmerDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Routes for admin
 Route::group([
     'middleware'=>['auth','admin'],
-    'prefix'=>'admin'
+    'prefix'=>'admin',
+    'as'=>'admin.'
 ], function () {
-    Route::get('dashboard', [DashboardController::class,'index'])->name('admin.dashboard.index');
+    Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
+
+    Route::resource('news', NewsController::class);
 });
 
 

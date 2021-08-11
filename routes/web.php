@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Routes for admin
 Route::group([
-    'middleware'=>['auth'],
+    'middleware'=>['auth','admin'],
     'prefix'=>'admin'
 ], function () {
     Route::get('dashboard', [DashboardController::class,'index'])->name('admin.dashboard.index');
@@ -35,7 +35,7 @@ Route::group([
 
 // Routes for farmers
 Route::group([
-    'middleware'=>['auth'],
+    'middleware'=>['auth','farmer'],
     'prefix'=>'farmer',
 ], function () {
     Route::get('dashboard', [FarmerDashboardController::class,'index'])->name('farmer.dashboard.index');

@@ -77,9 +77,12 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                <button type="submit" class="nav-link btn">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
-                    <span>Logout</span></a>
+                    <span>Logout</span></button>
+                </form>
             </li>
 
             <!-- Divider -->

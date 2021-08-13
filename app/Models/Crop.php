@@ -23,4 +23,9 @@ class Crop extends Model
         'unit',
         'status',
     ];
+
+    public function farmer()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

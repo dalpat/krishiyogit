@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CropController as AdminCropController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Farmer\CropController;
@@ -34,6 +35,7 @@ Route::group([
     'as'=>'admin.'
 ], function () {
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
+    Route::resource('crops', AdminCropController::class)->only(['index','update']);
 
     Route::resource('news', NewsController::class);
 });

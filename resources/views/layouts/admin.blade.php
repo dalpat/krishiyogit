@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body id="page-top">
@@ -51,6 +53,11 @@
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Farmers</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.crops.index') }}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Crops</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="">

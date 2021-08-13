@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Farmer\CropController;
 use App\Http\Controllers\Farmer\DashboardController as FarmerDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,8 +43,10 @@ Route::group([
 Route::group([
     'middleware'=>['auth','farmer'],
     'prefix'=>'farmer',
+    'as'=>'farmer.',
 ], function () {
-    Route::get('dashboard', [FarmerDashboardController::class,'index'])->name('farmer.dashboard.index');
+    Route::get('dashboard', [FarmerDashboardController::class,'index'])->name('dashboard.index');
+    Route::resource('crops', CropController::class);
 });
 
 

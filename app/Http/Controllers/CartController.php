@@ -40,4 +40,22 @@ class CartController extends Controller
         Cart::create($data);
         return redirect()->back()->withSuccess('Cart updated');
     }
+
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Cart $cart)
+    {
+        $data = $request->all();
+
+        $cart->update($data);
+        return redirect()->back()->with('success','cart updated');
+    }
 }

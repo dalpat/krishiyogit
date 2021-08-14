@@ -60,5 +60,5 @@ Route::group([
 Route::group([
     'middleware' => ['auth'],
 ], function () {
-    Route::resource('carts', CartController::class)->only(['index','store']);
+    Route::resource('carts', CartController::class)->only(['index','store','update']);
 });

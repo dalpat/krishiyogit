@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\Admin\CropController as AdminCropController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\CropController;
 use App\Http\Controllers\Farmer\CropController as FarmerCropController;
 use App\Http\Controllers\Farmer\DashboardController as FarmerDashboardController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class,'index'])->name('welcome');
 Route::resource('crops', CropController::class)->only(['index','show']);
+Route::resource('news', NewsController::class)->only(['index','show']);
 
 Auth::routes();
 
@@ -37,7 +39,7 @@ Route::group([
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
     Route::resource('crops', AdminCropController::class)->only(['index','update']);
 
-    Route::resource('news', NewsController::class);
+    Route::resource('news', AdminNewsController::class);
 });
 
 

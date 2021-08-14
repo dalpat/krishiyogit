@@ -15,6 +15,7 @@
                             <h4 class="card-title">{{ $crop->title }}</h4>
                             <p class="card-text">Price: <i class="fa fa-inr" aria-hidden="true"></i> {{ $crop->price }} /
                                 {{ $crop->unit }}</p>
+                                <p>Provider: {{ $crop->farmer->name }}</p>
                         </div>
 
                         <div class="card-footer">

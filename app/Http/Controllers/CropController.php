@@ -14,7 +14,7 @@ class CropController extends Controller
      */
     public function index()
     {
-        $crops = Crop::latest()->get();
+        $crops = Crop::with('farmer')->latest()->get();
         return view('crops.index',compact('crops'));
     }
 

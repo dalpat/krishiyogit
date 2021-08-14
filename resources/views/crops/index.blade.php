@@ -41,7 +41,7 @@
                         <div class="card-footer">
                             <a class="btn btn-primary" href="{{ route('crops.show', $crop->id) }}">View</a>
 
-                            <form action="{{ route('cart.store') }}" method="post" class="d-inline">
+                            <form action="{{ route('carts.store') }}" method="post" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="crop_id" value="{{ $crop->id }}">
                                 <button class="btn btn-primary">Add to cart</button>

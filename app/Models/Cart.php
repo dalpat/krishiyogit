@@ -21,8 +21,8 @@ class Cart extends Model
     //     return $this->belongsTo(User::class, 'vendor_id', 'id');
     // }
 
-    // public function crop()
-    // {
-    //     return $this->belongsTo(Crop::class);
-    // }
+    public function crop()
+    {
+        return $this->belongsTo(Crop::class);
+    }
 }

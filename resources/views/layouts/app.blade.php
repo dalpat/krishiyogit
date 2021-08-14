@@ -65,7 +65,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('carts.index') }}">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                     <span class="badge badge-pill badge-info">
                                         {{ count(Auth::user()->cart_items) }}

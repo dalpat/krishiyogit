@@ -39,7 +39,7 @@
                             {{ $crop->price . '/' . $crop->unit }}</p>
                         <p class="card-text">Farmer: {{ $crop->farmer->name }}</p>
 
-                        <form action="{{ route('cart.store') }}" method="post" class="d-inline">
+                        <form action="{{ route('carts.store') }}" method="post" class="d-inline">
                             @csrf
                             <input type="hidden" name="crop_id" value="{{ $crop->id }}">
                             <button class="btn btn-primary">Add to cart</button>

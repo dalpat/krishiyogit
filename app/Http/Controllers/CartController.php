@@ -11,6 +11,18 @@ class CartController extends Controller
 
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $carts = Cart::with('crop')->where('vendor_id', Auth::user()->id)->get();
+        return view('carts.index',compact('carts'));
+    }
+
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -27,7 +39,5 @@ class CartController extends Controller
         $data['vendor_id'] = Auth::user()->id;
         Cart::create($data);
         return redirect()->back()->withSuccess('Cart updated');
-
-
     }
 }

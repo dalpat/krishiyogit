@@ -5,6 +5,27 @@
 
 
     <div class="container">
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>Success</strong> {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>!</strong> {{ session('error') }}
+            </div>
+        @endif
+
+
         <div class="row">
             <div class="col-12 col-md-4">
                 <img src="{{ asset('storage/' . $crop->photo) }}" alt="" class="img-thumbnail">
@@ -16,8 +37,14 @@
                         <h4 class="card-title">{{ $crop->title }}</h4>
                         <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i>
                             {{ $crop->price . '/' . $crop->unit }}</p>
-                            <p class="card-text">Farmer: {{ $crop->farmer->name }}</p>
-                        <button type="button" class="btn btn-primary">Buy Now</button> <br>
+                        <p class="card-text">Farmer: {{ $crop->farmer->name }}</p>
+
+                        <form action="{{ route('cart.store') }}" method="post" class="d-inline">
+                            @csrf
+                            <input type="hidden" name="crop_id" value="{{ $crop->id }}">
+                            <button class="btn btn-primary">Add to cart</button>
+                        </form>
+
                         <a href="#details" class="btn btn-link">View details</a>
                     </div>
                 </div>

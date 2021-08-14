@@ -5,6 +5,26 @@
 
     <div class="container">
 
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>Success</strong> {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>!</strong> {{ session('error') }}
+            </div>
+        @endif
+
         <div class="row my-4">
             @foreach ($crops as $crop)
                 <div class="col-12 col-md-3">
@@ -15,11 +35,17 @@
                             <h4 class="card-title">{{ $crop->title }}</h4>
                             <p class="card-text">Price: <i class="fa fa-inr" aria-hidden="true"></i> {{ $crop->price }} /
                                 {{ $crop->unit }}</p>
-                                <p>Provider: {{ $crop->farmer->name }}</p>
+                            <p>Provider: {{ $crop->farmer->name }}</p>
                         </div>
 
                         <div class="card-footer">
                             <a class="btn btn-primary" href="{{ route('crops.show', $crop->id) }}">View</a>
+
+                            <form action="{{ route('cart.store') }}" method="post" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="crop_id" value="{{ $crop->id }}">
+                                <button class="btn btn-primary">Add to cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>

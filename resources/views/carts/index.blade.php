@@ -74,8 +74,28 @@
                         <p class="card-text">{{ count($carts) }} items</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Bill: <i class="fa fa-inr" aria-hidden="true"></i></li>
-                        <li class="list-group-item">Total: <i class="fa fa-inr" aria-hidden="true"></i></li>
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    Bill:
+                                </div>
+                                <div class="float-right">
+                                    <i class="fa fa-inr" aria-hidden="true"></i> {{ $total_bill_amount }}
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="list-group-item">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    Total:
+                                </div>
+                                <div class="float-right">
+                                    <i class="fa fa-inr" aria-hidden="true"></i> {{ $total_bill_amount }}
+                                </div>
+                            </div>
+
+                        </li>
                     </ul>
                 </div>
                 <br>

@@ -9,13 +9,20 @@ class Cart extends Model
 {
     use HasFactory;
 
-    public function vendor()
-    {
-        return $this->belongsTo(User::class,'vendor_id','id');
-    }
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['vendor_id', 'crop_id', 'quantity'];
 
-    public function crop()
-    {
-        return $this->belongsTo(Crop::class);
-    }
+    // public function vendor()
+    // {
+    //     return $this->belongsTo(User::class, 'vendor_id', 'id');
+    // }
+
+    // public function crop()
+    // {
+    //     return $this->belongsTo(Crop::class);
+    // }
 }

@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Crop::class);
     }
+
+    public function cart_items()
+    {
+        return $this->hasMany(Cart::class,'vendor_id');
+    }
 }

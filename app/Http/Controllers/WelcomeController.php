@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Crop;
 use App\Models\News;
-use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
@@ -12,6 +11,7 @@ class WelcomeController extends Controller
     {
         $crops = Crop::where('status','VERIFIED')->take(4)->latest()->get();
         $recent_news = News::where('status','PUBLISH')->take(4)->latest()->get();
+
         return view('welcome',compact('crops','recent_news'));
     }
 }

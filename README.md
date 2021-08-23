@@ -7,3 +7,7 @@
 - Run `php artisan migrate`
 - Run `php artisan serve`
 - That's it
+
+
+## Troubleshooting
+- `php artisan optimize` if you feel everything is correct but still errors are there

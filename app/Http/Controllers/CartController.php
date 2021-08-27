@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Crop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +45,7 @@ class CartController extends Controller
 
         $data = $request->all();
         $data['vendor_id'] = Auth::user()->id;
+        $data['seller_id'] = Crop::find($request->crop_id)->user_id;
         Cart::create($data);
         return redirect()->back()->withSuccess('Cart updated');
     }

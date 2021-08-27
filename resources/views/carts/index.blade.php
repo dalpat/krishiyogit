@@ -43,6 +43,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (!count($carts)>0)
+                        <tr>
+                            <td scope="row" colspan="2">No items in cart <a href="{{ route('crops.index') }}" class="btn btn-primary">Go Shopping</a></td>
+                        </tr>
+                        @endif
                         @foreach ($carts as $cart)
                             <tr>
                                 <td scope="row">{{ $cart->crop->title }}</td>
@@ -68,38 +73,38 @@
             </div>
 
             <div class="col-12 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Cart Summery</h4>
-                        <p class="card-text">{{ count($carts) }} items</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Cart Summery</h4>
+                            <p class="card-text">{{ count($carts) }} items</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="clearfix">
+                                    <div class="float-left">
+                                        Bill:
+                                    </div>
+                                    <div class="float-right">
+                                        <i class="fa fa-inr" aria-hidden="true"></i> {{ $total_bill_amount }}
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="list-group-item">
+                                <div class="clearfix">
+                                    <div class="float-left">
+                                        Total:
+                                    </div>
+                                    <div class="float-right">
+                                        <i class="fa fa-inr" aria-hidden="true"></i> {{ $total_bill_amount }}
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="clearfix">
-                                <div class="float-left">
-                                    Bill:
-                                </div>
-                                <div class="float-right">
-                                    <i class="fa fa-inr" aria-hidden="true"></i> {{ $total_bill_amount }}
-                                </div>
-                            </div>
-
-                        </li>
-                        <li class="list-group-item">
-                            <div class="clearfix">
-                                <div class="float-left">
-                                    Total:
-                                </div>
-                                <div class="float-right">
-                                    <i class="fa fa-inr" aria-hidden="true"></i> {{ $total_bill_amount }}
-                                </div>
-                            </div>
-
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-success">Proceed</button>
+                    <br>
+                    <a href="{{ route('checkout.getaddress') }}" type="submit" class="btn btn-success">Proceed</a>
             </div>
 
 

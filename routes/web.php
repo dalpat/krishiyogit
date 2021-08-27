@@ -4,9 +4,11 @@ use App\Http\Controllers\Admin\CropController as AdminCropController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CropController;
 use App\Http\Controllers\Farmer\CropController as FarmerCropController;
 use App\Http\Controllers\Farmer\DashboardController as FarmerDashboardController;
+use App\Http\Controllers\Farmer\NewsController as FarmerNewsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +54,7 @@ Route::group([
 ], function () {
     Route::get('dashboard', [FarmerDashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('crops', FarmerCropController::class);
+    Route::resource('news', FarmerNewsController::class)->only(['index','show']);
 });
 
 
@@ -60,5 +63,7 @@ Route::group([
 Route::group([
     'middleware' => ['auth'],
 ], function () {
-    Route::resource('carts', CartController::class)->only(['index','store','update']);
+    Route::resource('carts', CartController::class)->only(['index', 'store', 'update']);
+    Route::get('/checkout/getaddress', [CheckoutController::class, 'getaddress'])->name('checkout.getaddress');
+    Route::post('/checkout', [CheckoutController::class,'placeOrder'])->name('checkout.placeorder');
 });

@@ -14,7 +14,7 @@ class Cart extends Model
      *
      * @var array
      */
-    protected $fillable = ['vendor_id', 'crop_id', 'quantity'];
+    protected $fillable = ['vendor_id', 'seller_id', 'crop_id', 'quantity'];
 
     // public function vendor()
     // {

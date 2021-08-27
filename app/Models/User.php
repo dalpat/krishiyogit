@@ -46,6 +46,17 @@ class User extends Authenticatable
         return $this->hasMany(Crop::class);
     }
 
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'seller_id');
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Order::class, 'buyer_id');
+    }
+
     public function cart_items()
     {
         return $this->hasMany(Cart::class,'vendor_id');

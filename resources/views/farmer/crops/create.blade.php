@@ -26,7 +26,7 @@
                         <input type="text" class="form-control" name="title" id="title" placeholder="Crop title"
                             value="{{ old('title') }}">
                         @error('title')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -36,7 +36,7 @@
                         <label for="title">Photo</label>
                         <input type="file" class="form-control" name="photo" id="photo" placeholder="Crop title">
                         @error('photo')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -47,7 +47,7 @@
                         <textarea class="form-control" name="description" id="description"
                             rows="3">{{ old('description') }}</textarea>
                         @error('description')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -58,7 +58,7 @@
                         <input type="number" class="form-control" name="price" id="price" placeholder="Crop price"
                             value="{{ old('price') }}" step="0.5">
                         @error('price')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -73,7 +73,7 @@
                             <option value="LTR">LTR</option>
                         </select>
                         @error('unit')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror

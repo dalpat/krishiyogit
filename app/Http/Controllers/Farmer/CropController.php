@@ -40,6 +40,16 @@ class CropController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $request->validate([
+            'title'=>['required'],
+            'description'=>['nullable'],
+            'price'=>['required','integer','gt:1'],
+            'unit'=>['required'],
+            'photo'=>['required','mimes:jpg,bmp,png']
+        ]);
+
+
         $data['user_id'] = Auth::user()->id;
 
         if($request->hasFile('photo')){

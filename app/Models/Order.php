@@ -13,4 +13,9 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function farmer()
+    {
+        return $this->belongsTo(User::class, 'seller_id');
+    }
 }

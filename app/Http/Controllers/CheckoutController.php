@@ -59,9 +59,11 @@ class CheckoutController extends Controller
 
 
                 $order_item->crop_title = $cart->crop->title;
-                $order_item->crop_description = $cart->crop->title;
-                $order_item->crop_price = $cart->crop->title;
-                $order_item->crop_unit = $cart->crop->title;
+                $order_item->crop_description = $cart->crop->description;
+                $order_item->crop_price = $cart->crop->price;
+                $order_item->crop_unit = $cart->crop->unit;
+                $order_item->quantity = $cart->quantity;
+                $order_item->total_price = ($cart->quantity * $cart->crop->price);
 
                 $order_item->payment_status = 'PENDING';
                 $order_item->delivery_status ='PENDING';

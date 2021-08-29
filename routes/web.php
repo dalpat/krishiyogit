@@ -10,6 +10,7 @@ use App\Http\Controllers\Farmer\CropController as FarmerCropController;
 use App\Http\Controllers\Farmer\DashboardController as FarmerDashboardController;
 use App\Http\Controllers\Farmer\NewsController as FarmerNewsController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -66,4 +67,6 @@ Route::group([
     Route::resource('carts', CartController::class)->only(['index', 'store', 'update']);
     Route::get('/checkout/getaddress', [CheckoutController::class, 'getaddress'])->name('checkout.getaddress');
     Route::post('/checkout', [CheckoutController::class,'placeOrder'])->name('checkout.placeorder');
+
+    Route::resource('orders', OrderController::class);
 });

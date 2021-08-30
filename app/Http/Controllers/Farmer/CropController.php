@@ -46,6 +46,7 @@ class CropController extends Controller
             'description'=>['nullable'],
             'price'=>['required','integer','gt:1'],
             'unit'=>['required'],
+            'available_quantity'=>['required'],
             'photo'=>['required','mimes:jpg,bmp,png']
         ]);
 

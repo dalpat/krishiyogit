@@ -18,8 +18,9 @@ class CreateCropsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->string('description')->nullable();
+            $table->float('price', 8, 2);
             $table->string('photo')->default('images/crops/default.png');
-            $table->float('price',8,2);
+            $table->integer('available_quantity')->default(0);
             $table->string('unit');
             $table->string('status')->default('INACTIVE');
             $table->timestamps();

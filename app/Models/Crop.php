@@ -19,6 +19,7 @@ class Crop extends Model
         'title',
         'description',
         'photo',
+        'available_quantity',
         'price',
         'unit',
         'status',

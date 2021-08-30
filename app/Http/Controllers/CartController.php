@@ -23,10 +23,18 @@ class CartController extends Controller
         $total_bill_amount = 0;
 
         foreach ($carts as $cart) {
+            if ($cart->crop->available_quantity == 0) {
+                $cart->delete();
+            }
+
             $total_bill_amount += ($cart->crop->price * $cart->quantity);
         }
 
-        return view('carts.index', compact('carts','total_bill_amount'));
+        // re-run so that removed items doesn't show up in cart page
+        $carts = Cart::with('crop')->where('vendor_id', Auth::user()->id)->get();
+
+
+        return view('carts.index', compact('carts', 'total_bill_amount'));
     }
 
 

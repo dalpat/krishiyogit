@@ -44,7 +44,10 @@
                             <form action="{{ route('carts.store') }}" method="post" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="crop_id" value="{{ $crop->id }}">
-                                <button class="btn btn-primary">Add to cart</button>
+                                @if ($crop->available_quantity === 0) <span
+                                    class="badge badge-danger">Out of stock</span> @else
+                                    <button class="btn btn-primary">Add to cart</button>
+                                @endif
                             </form>
                         </div>
                     </div>

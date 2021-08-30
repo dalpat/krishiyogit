@@ -39,25 +39,30 @@
         </div>
         <div class="row">
             @foreach ($crops as $crop)
-            <div class="col-12 col-md-3">
-                <div class="card h-100">
-                    <img class="card-img-top w-100 img-fluid img-thumbnail p-4 border-0 rounded" src="{{ asset('storage/'.$crop->photo) }}" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ $crop->title }}</h4>
-                        <p class="card-text">Price: <i class="fa fa-inr" aria-hidden="true"></i> {{ $crop->price }} / {{ $crop->unit }}</p>
-                    </div>
+                <div class="col-12 col-md-3">
+                    <div class="card h-100">
+                        <img class="card-img-top w-100 img-fluid img-thumbnail p-4 border-0 rounded"
+                            src="{{ asset('storage/' . $crop->photo) }}" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ $crop->title }}</h4>
+                            <p class="card-text">Price: <i class="fa fa-inr" aria-hidden="true"></i>
+                                {{ $crop->price }} / {{ $crop->unit }}</p>
+                        </div>
 
-                    <div class="card-footer">
-                        <a class="btn btn-primary" href="{{ route('crops.show', $crop->id) }}">View</a>
+                        <div class="card-footer">
+                            <a class="btn btn-primary" href="{{ route('crops.show', $crop->id) }}">View</a>
 
-                        <form action="{{ route('carts.store') }}" method="post" class="d-inline">
-                            @csrf
-                            <input type="hidden" name="crop_id" value="{{ $crop->id }}">
-                            <button class="btn btn-primary">Add to cart</button>
-                        </form>
+                            <form action="{{ route('carts.store') }}" method="post" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="crop_id" value="{{ $crop->id }}">
+                                @if ($crop->available_quantity === 0) <span
+                                    class="badge badge-danger">Out of stock</span> @else
+                                    <button class="btn btn-primary">Add to cart</button>
+                                @endif
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
         {{-- end of crops block --}}
@@ -77,18 +82,19 @@
         </div>
         <div class="row">
             @foreach ($recent_news as $news)
-            <div class="col-12 col-md-3">
-                <div class="card h-100">
-                    <img class="card-img-top w-100 img-fluid img-thumbnail p-4 border-0 rounded" src="{{ asset('storage/'.$news->thumbnail) }}" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ $news->title }}</h4>
-                    </div>
+                <div class="col-12 col-md-3">
+                    <div class="card h-100">
+                        <img class="card-img-top w-100 img-fluid img-thumbnail p-4 border-0 rounded"
+                            src="{{ asset('storage/' . $news->thumbnail) }}" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ $news->title }}</h4>
+                        </div>
 
-                    <div class="card-footer">
-                        <a class="btn btn-primary" href="{{ route('news.show', $news->id) }}">View</a>
+                        <div class="card-footer">
+                            <a class="btn btn-primary" href="{{ route('news.show', $news->id) }}">View</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
         {{-- end of news block --}}

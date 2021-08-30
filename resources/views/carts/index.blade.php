@@ -58,13 +58,11 @@
                                         <label for="quantity">Quantity in {{ $cart->crop->unit }}</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" name="quantity" id="quantity"
-                                                placeholder="Quantity" value="{{ old('quantity', $cart->quantity) }}">
+                                                placeholder="Quantity" value="{{ old('quantity', $cart->quantity) }}" max="0">
                                             <button type="submit" class="btn btn-success d-inline input-group-addon"><i
                                                     class="fa fa-check" aria-hidden="true"></i></button>
                                         </div>
                                     </form>
-
-
                                 </td>
                             </tr>
                         @endforeach

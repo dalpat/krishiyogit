@@ -57,6 +57,17 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="available_quantity">available_quantity</label>
+                        <input type="number" class="form-control" name="available_quantity" id="available_quantity" placeholder="Crop available_quantity"
+                            value="{{ old('available_quantity', $crop->available_quantity) }}">
+                        @error('available_quantity')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label for="price">Price</label>
                         <input type="number" class="form-control" name="price" id="price" placeholder="Crop price"
                             value="{{ old('price', $crop->price) }}" step="0.5">

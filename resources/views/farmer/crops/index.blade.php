@@ -30,6 +30,7 @@
                             <th width="200">Updated on</th>
                             <th>Title</th>
                             <th>Price/Unit</th>
+                            <th>Available Qty</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -39,11 +40,14 @@
                             <tr>
                                 <td scope="row">{{ $crop->updated_at }}</td>
                                 <td>{{ $crop->title }}</td>
-                                <td><i class="fa fa-inr" aria-hidden="true"></i> {{ $crop->price . '/' . $crop->unit }}</td>
+                                <td><i class="fa fa-inr" aria-hidden="true"></i>
+                                    {{ $crop->price . '/' . $crop->unit }}</td>
+                                <td>@if ($crop->available_quantity === 0) <span class="badge badge-danger">Out of stock</span> @else {{ $crop->available_quantity }} @endif</td>
                                 <td><span class="badge badge-info h4">{{ $crop->status }}</span></td>
                                 <td>
                                     <a href="{{ route('farmer.crops.edit', $crop->id) }}" class="btn btn-primary">Edit</a>
-                                    <form action="{{ route('farmer.crops.destroy', $crop->id) }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure?')">
+                                    <form action="{{ route('farmer.crops.destroy', $crop->id) }}" method="post"
+                                        class="d-inline" onsubmit="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>

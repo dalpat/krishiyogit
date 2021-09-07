@@ -38,12 +38,19 @@
                         <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i>
                             {{ $crop->price . '/' . $crop->unit }}</p>
                         <p class="card-text">Farmer: {{ $crop->farmer->name }}</p>
+                        <p>Available Quantity:
+                            @if ($crop->available_quantity === 0) <span
+                                class="badge badge-danger">Out of stock</span>
+                            @else
+                                {{ $crop->available_quantity }}
+                            @endif
+                        </p>
 
                         <form action="{{ route('carts.store') }}" method="post" class="d-inline">
                             @csrf
                             <input type="hidden" name="crop_id" value="{{ $crop->id }}">
-                            @if ($crop->available_quantity === 0) <span
-                                class="badge badge-danger">Out of stock</span> @else
+                            @if ($crop->available_quantity === 0)
+                            @else
                                 <button class="btn btn-primary">Add to cart</button>
                             @endif
                         </form>
